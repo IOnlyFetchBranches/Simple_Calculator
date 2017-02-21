@@ -1,5 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,20 +35,43 @@ public class Controller implements Initializable {
     @FXML
     private Button clear;
     @FXML
-    private Button addButton,subButton,divideButton,multButton,x2;
+    private Button addButton;
+    @FXML
+    private Button subButton;
+    @FXML
+    private Button divideButton;
+    @FXML
+    private Button multButton;
+    @FXML
+    private Button x2;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
 
     @FXML // URL location of the FXML file that was given to the FXMLLoader
     private URL location;
+    @FXML
+    private TextArea screen=new TextArea();
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     public void initialize(URL url ,ResourceBundle resources) {
     check();
+    //setup Screen
+        screen.setWrapText(true);
+        screen.setEditable(false);
+        Tooltip helpScreenTip=new Tooltip("This is the Screen!");
+        helpScreenTip.setMinSize(50,50);
+        screen.setTooltip(helpScreenTip);
+
+
+
+
+    System.out.println("Initialized!");
     }
 
+
     private void check(){
+        System.out.println("Checking!");
         assert button1 != null : "fx:id=\"1\" was not injected: check your FXML file 'simple.fxml'.";
         assert button2 != null : "fx:id=\"2\" was not injected: check your FXML file 'simple.fxml'.";
         assert button3 != null : "fx:id=\"3\" was not injected: check your FXML file 'simple.fxml'.";
@@ -65,6 +90,7 @@ public class Controller implements Initializable {
         assert multButton != null : "fx:id=\"*\" was not injected: check your FXML file 'simple.fxml'.";
         assert divideButton != null : "fx:id=\"/\" was not injected: check your FXML file 'simple.fxml'.";
         assert x2 != null : "fx:id=\"x^2\" was not injected: check your FXML file 'simple.fxml'.";
+        assert screen != null : "fx:id=\"screen\" was not injected: check your FXML file 'simple.fxml'.";
 
 
 
