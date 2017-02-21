@@ -1,15 +1,19 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-
+    private StringBuilder sb=new StringBuilder();
+    private boolean reset;
     @FXML
-    private Button button1;
+    public Button button1;
     @FXML
     private Button button2;
     @FXML
@@ -60,11 +64,12 @@ public class Controller implements Initializable {
         screen.setWrapText(true);
         screen.setEditable(false);
         Tooltip helpScreenTip=new Tooltip("This is the Screen!");
-        helpScreenTip.setMinSize(50,50);
+        helpScreenTip.setMinSize(30,20);
         screen.setTooltip(helpScreenTip);
+        screen.setCursor(Cursor.DISAPPEAR);
 
 
-
+        initButtons();
 
     System.out.println("Initialized!");
     }
@@ -95,6 +100,35 @@ public class Controller implements Initializable {
 
 
     }
+    @FXML
+    private void update(String input){
 
+        sb.append(input);
+        screen.setText(sb.toString());
+    }
 
+    private void initButtons(){
+
+    button1.setOnMouseClicked((MouseEvent event)-> {
+        update(1+" ");
+        event.consume();
+    });
+        button2.setOnMouseClicked((MouseEvent event)-> {
+            update(2+" ");
+            event.consume();
+        });
+        button3.setOnMouseClicked((MouseEvent event)-> {
+            update(3+" ");
+            event.consume();
+        });
+        button4.setOnMouseClicked((MouseEvent event)-> {
+            update(4+" ");
+            event.consume();
+        });
+        button5.setOnMouseClicked((MouseEvent event)-> {
+            update(5+" ");
+            event.consume();
+        });
+
+    }
 }
