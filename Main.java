@@ -7,7 +7,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application{
 
-    @Override
+
+   @Override
     public void start(Stage primaryStage) throws Exception {
         Pane root =  FXMLLoader.load(Main.class.getResource("frame.fxml"));
 
